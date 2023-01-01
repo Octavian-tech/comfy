@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route,Routes } from "react-router-dom";
 // import styled from "styled-components";
 import { Navbar, Sidebar, Footer } from "./components";
 
@@ -19,31 +19,33 @@ function App() {
   return (
     <AuthWrapper>
       <Router>
+      {/* <React.Fragment> */}
         <Navbar />
         <Sidebar />
-        <Switch>
-          <Route exact path="/">
-            <Home />
-          </Route>
-          <Route exact path="/about">
-            <About />
-          </Route>
-          <Route exact path="/cart">
-            <Cart />
-          </Route>
-          <Route exact path="/products">
-            <Products />
-          </Route>
-          <Route exact path="/products/:id">
-            <SingleProduct />
-          </Route>
-          <PrivateRoute exact path="/checkout">
-            <Checkout />
-          </PrivateRoute>
-          <Route exact path="*">
-            <ErrorPage />
-          </Route>
-        </Switch>
+        <Routes>
+          <Route  path="/" element={<Home />}/>
+            {/* <Home />
+          </Route> */}
+          <Route  path="/about" element={<About />} />
+            {/* <About />
+          </Route> */}
+          <Route  path="/cart" element={<Cart />}/>
+            {/* <Cart />
+          </Route> */}
+          <Route  path="/products" element={<Products />}/>
+            {/* <Products />
+          </Route> */}
+          <Route  path="/products/:id" element={<SingleProduct />}/>
+            {/* <SingleProduct />
+          </Route> */}
+          <Route  path="/checkout" element={<PrivateRoute> <Checkout /> </PrivateRoute>}/>
+            {/* <Checkout />
+          </PrivateRoute> */}
+          <Route  path="*" element={<ErrorPage />}/>
+            {/* <ErrorPage />
+          </Route> */}
+        </Routes>
+        {/* </React.Fragment> */}
         <Footer />
       </Router>
     </AuthWrapper>
